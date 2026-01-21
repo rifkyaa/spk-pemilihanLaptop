@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Navigation from '@/components/layout/Navigation'
 import StoreProvider from '@/components/providers/StoreProvider'
+import { getCurrentYear, getCopyrightYearRange } from '@/lib/utils/dateUtils';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,6 +12,9 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const year = getCurrentYear(); 
+  const yearRange = getCopyrightYearRange(2023); 
+  
   return (
     <html lang="id">
       <body className={inter.className}>
@@ -23,7 +27,7 @@ export default function RootLayout({ children }) {
             <footer className="border-t mt-8">
               <div className="container mx-auto p-6 text-center text-gray-600 text-sm">
                 <p>Sistem Pendukung Keputusan - Metode Perbandingan Eksponensial (MPE)</p>
-                <p className="mt-1">© 2024 - Untuk Tugas UAS SPK</p>
+                <p className="mt-1">© {getCurrentYear()} - Untuk Tugas UAS SPK</p>
               </div>
             </footer>
           </div>
